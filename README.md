@@ -1,2 +1,2 @@
-# XlinxFPGAHDMI
-使用Xilinx的ZYNQ系列中ZU4EV芯片进行HDMI2.1相关开发
+# HDMI2.1-FPGA-CPP
+使用verilog和c++在fpga和cpu两个平台进行进行HDMI2.1的相关开发

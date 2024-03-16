@@ -1,0 +1,598 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+
+</style><title>8B10B编码</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=' first-line-indent'><h1 id='8b10b编码详解'><span>8B10B编码详解</span></h1><p><span>--- by Andy</span></p><blockquote><p><span>HDMI使用16B/18B编码作为保证 DC 平衡 的重要工具。通过查看16B/18Bexcel表格可以发现其内容与8B/10B编码一致，而且16B/18B的原始论文和相关资料较少，所以通过学习8B/10B来理解16B/18B的工作原理。</span></p></blockquote><h2 id='前言'><span>前言</span></h2><p><span>在高速的串行数据传输中要达到令人满意的误码率，其关键技术在于串行传输中数据的编码方法。8B/10B作为互联接口一种技术，在提出后被广泛应用到各种高速接口上。8B/10B编码最初由IBM公司的Albert X.Widemer和Peter A.Franaszek发明，并应用于 ESCON(200M互连系统)中。它是mBnB编码中的一个特例。本文将介绍该编码的原理和实现方式，最后会简单介绍该编码的优缺点。</span></p><h2 id='8b10b码技术基础理论'><span>8B10B码技术基础理论</span></h2><blockquote><p><span>高速接口被广泛应用于包括SATA、SAS、PCI、PCI-e等多种标准中。高速接口技术可以达到甚至超越10Gb/s，从高速接口的组成部分来看，可以知道这些接口是由三部分构成：</span></p><ol start='' ><li><span>电路部分（串行/解串行）</span></li><li><span>物理部分（编解码）</span></li><li><span>链路与协议部分（流量控制、纠错检错等高层协议）</span></li></ol><p><span>物理部分要给电路部分提供稳定运行的保障。</span></p></blockquote><p><span>数据在线路传输过程中会产生许多问题，从而导致数据的丢失、错误。综合来说，存在以下问题：数字序列中连续出现相同的 “0” 或 “1” ，在传输到接收端之后，会因为信号的衰减，出现难以分辨的情况。</span></p><p><span>物理部分主要任务是对数据进行编码，以保证串行/解串行器的正常运行。编码的目的包括：确保必要的变换，保证稳定的直流均衡。</span></p><p><span>编码的要求：1）编码所选择的码型不能随便的，要确保编码、解码双方都能明确其含义，相当于是编码表中各个编码不能存在歧义，要保证比特序列的独特性。2）其次，确保数据流中具有足够的边沿让接收端恢复时钟，从而不再需要分配时钟（传输过程不需要通用参考时钟），让传输实现更高的速率（串行）</span></p><p>&nbsp;</p><h2 id='8b10b码编码原理'><span>8B10B码编码原理</span></h2><p><span>8B10B码的编码方式就是将8bit的代码组合编码成10bit代码。代码组合有</span><strong><span>256个数据字符编码</span></strong><span>和</span><strong><span>12个控制字符编码</span></strong><span>，分别将其记为D.x.y和K.x.y。</span></p><h3 id='编码方案'><span>编码方案</span></h3><p><span>8B10B编码方案就是将8bit数据分成2个子分组。3个最高有效位（记为y）和5个最低有效位（记为x）。从最高有效位到最低有效位分别记为HGF和EDCBA。然后将3bit的HGF编码为4bit的代码，记为jhgf；再将5bit的EDCBA编码为6bit的代码，记为iedcba。编码原理如下图所示：</span></p><p><img src="8B10B编码.assets/image-20230913164548449-16945947502603-16945947528065.png" referrerpolicy="no-referrer" alt="image-20230913164548449"></p><h3 id='dc平衡'><span>DC平衡</span></h3><p><span>编码为了保证直流平衡，有一些相关措施。</span></p><p><strong><span>D</span></strong><span>（disparity，不平衡度）：在每个子分组中，通过“0”的个数减去“1”的个数计算得到D。例如：在6bit代码中，“0”的个数为4，“1”的个数为2，则 D = 4 - 2  = +2。</span></p><p><strong><span>RD</span></strong><span>(running disparity，极性偏差)：编码过程中，RD表示不平衡度。RD是对编码后的数据流的统计，RD+用来表示1比0多，RD-用来表示0比1多。RD-是初始状态</span></p><blockquote><p><span>每当对一个分组进行编码时，都需要对其计算RD。</span></p><p><span>当码字的 D == 0 时，称 该码字为完美平衡码。</span></p><p><span>如果4bit和6bit分组的“0”和“1”个数相等，称为完美直流平衡代码。</span></p></blockquote><p><span>编码过程当中5B/6B编码在前而3B/4B编码在后，用于当前5B/6B编码的RD是前面一个字节编码所产生的RD(接收或发送第一个传输字符时为初始化的RD值)，而用于3B/4B编码是前面相邻的5B/6B编码所生成的RD，但是整个字节编码所生成的RD值是由3B/4B编码得到的。</span></p><div align="center">不均等性的执行规则</div><figure><table><thead><tr><th><span>Previous RD</span></th><th style='text-align:left;' ><span>Disparity of 6 or 4 Bit Code</span></th><th><span>Disparity chosen</span></th><th><span>Next RD</span></th></tr></thead><tbody><tr><td><span>−1</span></td><td style='text-align:left;' ><span>0</span></td><td><span>0</span></td><td><span>−1</span></td></tr><tr><td><span>−1</span></td><td style='text-align:left;' ><span>±2</span></td><td><span>+2</span></td><td><span>+1</span></td></tr><tr><td><span>+1</span></td><td style='text-align:left;' ><span>0</span></td><td><span>0</span></td><td><span>+1</span></td></tr><tr><td><span>+1</span></td><td style='text-align:left;' ><span>±2</span></td><td><span>−2</span></td><td><span>−1</span></td></tr></tbody></table></figure><h3 id='编码表分析'><span>编码表分析</span></h3><p><img src="8B10B编码.assets/image-20230914132427900.png" referrerpolicy="no-referrer" alt="image-20230914132427900"></p><p><img src="8B10B编码.assets/image-20230914132507353.png" referrerpolicy="no-referrer" alt="image-20230914132507353"></p><p><img src="8B10B编码.assets/image-20230914133437968.png" referrerpolicy="no-referrer" alt="image-20230914133437968"></p><ol start='' ><li><p><span>3bit转4bit分组中，4bit代码共有16种，而完美平衡码只有6种。相对应的原码3bit，则有8种，必然存在非完美平衡码。</span></p></li><li><p><span>5bit转6bit分组中，6bit代码只有20种编码是完美平衡码，而5bit原码共有32种，必然存在非完美平衡码。</span></p></li><li><p><span>编码后的4bit、6bit代码都是偶数个数。因此不存在 D == +1 或 D == -1 这两种情况。</span></p></li><li><p><span>此外，经过8B/10B编码以后，</span><strong><span>连续的“1”和“0”基本上不会超过5个</span></strong><span>，</span><strong><span>只有在使用comma时，才会出现</span></strong><span>连续的5个0或1。</span></p></li><li><p><span>在数据字符编码中，3b/4b编码中存在</span><strong><span>D.x.P7</span></strong><span>和</span><strong><span>D.x.A7</span></strong><span>。两种D.x.7编码和5b/6b组合时D.x.P7和D.x.A7编码必须选择一个来避免连续的5个0或1。D.x.A7用在：x=17 x=18 x=20当RD=-1时；x=11 x=13 x=14 当RD=+1时。其他情况下x.A7码不能被使用。</span></p></li><li><p><strong><span>†</span></strong><span> 在不同表中具有不同含义：</span></p><ol start='' ><li><span>在数据字符编码中：表示一种独特的编码规则：在D.x.y中，x=23  、x=27 、 x=29 、 x=30时，选取相对应3b/4b表中代码时，可以选取 K.x.7 编码，共同构成控制字符编码表中的后四个，即：K.23.7 、K.27.7 、K.29.7 、K.30.7。</span></li><li><span>在 7.2 详解</span></li></ol></li><li><p><strong><span>‡</span></strong><span> 在不同表中具有不同含义：</span></p><ol start='' ><li><span>在数据字符编码表中，‡ 标识的代码（3b/4b表）是候补编码，可以与K.28（5b/6b表）组成</span><strong><span>逗号码</span></strong><span>。</span></li><li><span>在控制字符编码中 † ‡ 所标识的代码（K.28.1 K.28.5 K.28.7）是</span><strong><span>逗号码</span></strong><span>，用于确保数据流中的唯一性。逗号序列是用来校准用的，如果不使用K.28.7，则唯一的逗号序列11</span><strong><span>0000 0</span></strong><span>1xx or 00</span><strong><span>1111 1</span></strong><span>0xx 不会无意中出现在任何正常代码组合中的任何位上。K.28.1、K.28.5 和 K.28.7 生成的逗号符号中</span><strong><span>包含五个连续 0 或 1</span></strong><span> 的位序列。‡ 在实际编码中，如果K.28.7可以被使用，一种更复杂的校准规范需要†被使用，它们能组合成各种“原语”，在任何情况下多个K.28.7序列不允许被同时使用，它将导致不可探测的逗号序列。</span></li></ol></li><li><p><span>逗号码：“逗号码”，其实都是当初在规划8B/10B编码机制的时候，所谓的控制代码（Control Characters）的其中之一。8B/10B标准中使用了12个特殊的控制代码，他们能在数据中被发送，还可以组合成各种“</span><a href='https://www.baidu.com/s?wd=原语&amp;tn=24004469_oem_dg&amp;rsv_dl=gh_pl_sl_csd'><span>原语</span></a><span>”。逗号符号用于同步(在位流中查找8b/10b 码的对齐)。</span></p></li></ol><p><span>补充：</span></p><ol start='' ><li><span>‡如果在实际编码中允许使用K.28.7，则需要使用比†建议的更复杂的同步模式定义，因为K.28.7与其他几个代码的组合会形成一个假的错位逗号符号重叠在两个代码上。在任何情况下，多个K.28.7代码的序列都是不允许的，因为这会导致无法检测到的错误对齐的逗号符号。</span></li><li><span>K.28.7  是控制字符编码里最特殊的编码，它不能是数据流中</span><strong><span>单个bit错误</span></strong><span>的结果。</span></li></ol><p>&nbsp;</p><blockquote><p><span>分析理解：</span></p><p><strong><span>K.28.7</span></strong><span> 是逗号符号中唯一一个不会受到单比特错误影响的符号。在8b/10b编码中，逗号符号（comma symbols）通常用于同步和对齐数据流，以确保数据的正确解码。</span><strong><span>单比特错误</span></strong><span>是指在数据流中的某一位发生了单个位的改变，可能由于噪声或其他干扰引起。文中指出，K.28.7 是唯一一个逗号符号，它不会受到单比特错误的影响。这意味着无论数据流中是否发生了单个位的错误，K.28.7 逗号符号都可以被可靠地检测和识别。这一特性对于保持数据流的同步和准确性非常重要，因为它确保了即使在存在噪声或干扰的情况下，接收端仍然能够正确识别逗号符号并继续正确解码数据。因此，K.28.7 在8b/10b编码中具有一种特殊的可靠性，使其在同步和对齐方面非常有用。其他逗号符号可能会更容易受到单比特错误的干扰，但K.28.7 具有额外的稳定性，不容易受到这种错误的影响。</span></p><p><strong><span>在8b/10b编码中使用 K.28.7 控制字符时的一些复杂情况和同步模式的定义</span></strong><span>：</span></p><ol start='' ><li><strong><span>如果允许使用 K.28.7 控制字符</span></strong><span>：在某些情况下，通信系统可能允许使用 K.28.7 控制字符。这是为了特定的通信要求或应用场景。如果 K.28.7 是允许的，那么同步模式的定义需要更加复杂。</span></li><li><strong><span>更复杂的同步模式</span></strong><span>：在 † 中提到的同步模式定义是基于 K.28.1 和 K.28.5 控制字符的，用于找到数据编码的边界。然而，如果允许使用 K.28.7，那么同步模式需要更复杂，因为K.28.7 和其他编码字符的组合可能会形成错误的、不对齐的逗号符号，从而影响数据的同步。“</span><strong><span>1100000111</span></strong><span> 0111000011”</span></li><li><strong><span>避免多个 K.28.7 的序列</span></strong><span>：文本还提到，不允许在数据流中出现多个连续的 K.28.7 控制字符序列。这是因为多个 K.28.7 的序列可能导致无法检测的逗号符号错位，这会干扰数据同步和对齐。eg：K.28.7 K.28.7 K.28.7  = = “0011111000 00111</span><strong><span>11000 00111</span></strong><span>11000” </span></li></ol></blockquote><p>&nbsp;</p><h2 id='编解器实现'><span>编解器实现</span></h2><blockquote><ol start='' ><li><p><span>基于查找表设计编解码器，占用存储空间也非常大，实现起来逻辑比较简单</span></p></li><li><p><span>对编码表进行分析，搞明白表格中各个表项的之间的关系，还可以对表项代码的规律进行总结，提前根据编码的D值进行划分，</span></p></li><li><ol start='' ><li><span>特殊字符的编码有12种，每一种特殊字符RD-和RD+对应的10bit编码不同，但码值互为反码</span></li><li><span>Ｋ28.0、Ｋ28.4、Ｋ28.7、Ｋ23.7、Ｋ27.7、Ｋ29.7和Ｋ30.7是完美平衡代码。其余6种是不平衡代码。</span></li><li><span>采用12个ＲＯＭ 单元实现，每个单元11位，其中10位是特殊字符编码，一位是代码完美平衡标志。  </span></li></ol></li><li><ol start='' ><li><span>5bit到 6bit编码有32种，在6bit完美平衡的代码中，只有一种（编码7）RD-和RD+对应的6bit编码不同，其余均相同</span></li><li><span>在6bit不平衡的代码中，RD-的6bit中有 4个 “1”和 2个 “0”，并且RD+对应的6bit编码是RD-的反码 。</span></li><li><span>用 32个ROM单元 实 现。每个单元7位，其中6位是编码值，一位是完美平衡代码标志。</span></li></ol></li><li><p><span>最后一组是组合6bit和4bit为10bit：要满足 1）极性偏差不能大于2  2）连续的“1”和“0”个数不能大于5。</span></p></li></ol><p><span>实现步骤为：1. 判断是特殊字符还是数据字符； 2. 若是特殊字符，根据RD取值； 3.如果是数据字符，根据RD确定6bit的取值； 4.根据6bit编码值选取4bit编码值。</span></p></blockquote><p><img src="8B10B编码.assets/image-20230915130513287.png" referrerpolicy="no-referrer" alt="image-20230915130513287"></p><h2 id='参考资料'><span>参考资料</span></h2><ol start='' ><li><span>WIDMER A X, FRANASZEK P A. A DC-Balanced, Partitioned-Block, 8B/10B Transmission Code[J/OL]. IBM Journal of Research and Development, 1983, 27(5): 440-451. DOI:</span><a href='https://doi.org/10.1147/rd.275.0440'><span>10.1147/rd.275.0440</span></a><span>.</span></li><li><span>李宥谋. 8B/10B编码器的设计及实现[J]. 电讯技术, 2005(6): 26-32.</span></li><li><span>靳鹏. 基于FPGA的8B/10B编码器的设计与实现[J/OL]. 电子世界, 2018(8): 142-143. DOI:</span><a href='https://doi.org/10.19353/j.cnki.dzsj.2018.08.079'><span>10.19353/j.cnki.dzsj.2018.08.079</span></a><span>.</span></li><li><span>杨佩, 张丽娜, 张洵颖, 等. LVDS中8B/10B编码解码器的设计与实现[J/OL]. 微电子学与计算机, 2014, 31(5): 41-43+48. DOI:</span><a href='https://doi.org/10.19304/j.cnki.issn1000-7180.2014.05.010'><span>10.19304/j.cnki.issn1000-7180.2014.05.010</span></a><span>.</span></li><li><a href='https://blog.csdn.net/dongdongnihao_/article/details/123747597'><span>让我们来搞清楚8b/10b编码到底是怎么回事吧_bendandawugui的博客-CSDN博客</span></a></li><li><a href='https://en.wikipedia.org/wiki/8b/10b_encoding'><span>8b/10b encoding - Wikipedia</span></a></li><li><a href='https://blog.csdn.net/qq_53281270/article/details/127771308?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-0-127771308-blog-79982486.235^v38^pc_relevant_sort_base2&amp;spm=1001.2101.3001.4242.1&amp;utm_relevant_index=3'><span>8B10B编解码原理与FPGA代码</span><em><span>8b10b编码verilog实现</span></em><span>＆ ＃ ＆的博客-CSDN博客</span></a></li><li><a href='https://www.bilibili.com/video/BV1494y1R7hA/?spm_id_from=333.337.search-card.all.click&amp;vd_source=e466977515beb5c472268009969a4ea4'><span>高速接口知识点1：8b/10b编码原理</span><em><span>哔哩哔哩</span></em><span>bilibili</span></a></li><li><a href='https://www.cnblogs.com/YINBin/p/11011232.html'><span>8B/10B Encode/Decode详解 - 那些城市那些花 - 博客园 (cnblogs.com)</span></a></li><li><a href='https://blog.csdn.net/yundanfengqing_nuc/article/details/87967605?spm=1001.2014.3001.5506'><span>8B/10B编码_yundanfengqing_nuc的博客-CSDN博客</span></a></li><li><a href='https://blog.csdn.net/qq_37654178/article/details/112391245'><span>8B/10B编码基本原理</span><em><span>8b10b编码原理</span></em><span>KSY至上主义者的博客-CSDN博客</span></a></li></ol></div></div>
+</body>
+</html>
